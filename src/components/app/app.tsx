@@ -9,7 +9,6 @@ import { ConstructorPage } from '@pages';
 
 import styles from './app.module.css';
 
-// Импортируем все страницы
 import {
   Login,
   Register,
@@ -21,10 +20,8 @@ import {
   NotFound404
 } from '@pages';
 
-// Компоненты модалок
 import { Modal, OrderInfo, IngredientDetails } from '@components';
 
-// Защита роутов
 import { ProtectedRoute } from '../protected-route/protected-route';
 
 const App = () => {
@@ -48,11 +45,9 @@ const App = () => {
 
       <main className={styles.main}>
         <Routes location={background || location}>
-          {/* Общедоступные */}
           <Route path='/' element={<ConstructorPage />} />
           <Route path='/feed' element={<Feed />} />
 
-          {/* Только для НЕавторизованных */}
           <Route
             path='/login'
             element={
@@ -86,7 +81,6 @@ const App = () => {
             }
           />
 
-          {/* Только для авторизованных */}
           <Route
             path='/profile'
             element={
@@ -104,16 +98,13 @@ const App = () => {
             }
           />
 
-          {/* Динамические страницы */}
           <Route path='/ingredients/:id' element={<IngredientDetails />} />
           <Route path='/feed/:number' element={<OrderInfo />} />
           <Route path='/profile/orders/:number' element={<OrderInfo />} />
 
-          {/* 404 */}
           <Route path='*' element={<NotFound404 />} />
         </Routes>
 
-        {/* Модальное окно поверх */}
         {background && (
           <Routes>
             <Route
