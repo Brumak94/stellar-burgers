@@ -100,7 +100,14 @@ const App = () => {
 
           <Route path='/ingredients/:id' element={<IngredientDetails />} />
           <Route path='/feed/:number' element={<OrderInfo />} />
-          <Route path='/profile/orders/:number' element={<OrderInfo />} />
+          <Route
+            path='/profile/orders/:number'
+            element={
+              <ProtectedRoute>
+                <OrderInfo />
+              </ProtectedRoute>
+            }
+          />
 
           <Route path='*' element={<NotFound404 />} />
         </Routes>
@@ -126,9 +133,11 @@ const App = () => {
             <Route
               path='/profile/orders/:number'
               element={
-                <Modal title='Детали заказа' onClose={handleCloseModal}>
-                  <OrderInfo />
-                </Modal>
+                <ProtectedRoute>
+                  <Modal title='Детали заказа' onClose={handleCloseModal}>
+                    <OrderInfo />
+                  </Modal>
+                </ProtectedRoute>
               }
             />
           </Routes>
