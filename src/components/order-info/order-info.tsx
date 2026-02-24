@@ -3,21 +3,30 @@ import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
 
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from '../../services/store';
+import { useEffect, useState } from 'react';
+import { getIngredients } from '../../services/slices/ingredientsSlice';
+import { TOrder } from '@utils-types';
+import { getOrderByNumberApi } from '../../utils/burger-api';
+
 export const OrderInfo: FC = () => {
-  /** TODO: взять переменные orderData и ingredients из стора */
-  const orderData = {
-    createdAt: '',
-    ingredients: [],
-    _id: '',
-    status: '',
-    name: '',
-    updatedAt: 'string',
-    number: 0
-  };
+  const { number } = useParams<{ number: string }>();
+  const dispatch = useDispatch();
+  const [orderData, setOrderData] = useState<TOrder | null>(null);
 
-  const ingredients: TIngredient[] = [];
+  const ingredients: TIngredient[] = useSelector(getIngredients);
 
-  /* Готовим данные для отображения */
+  useEffect(() => {
+    if (number) {
+      getOrderByNumberApi(parseInt(number)).then((data) => {
+        if (data.success && data.orders.length > 0) {
+          setOrderData(data.orders[0]);
+        }
+      });
+    }
+  }, [number]);
+
   const orderInfo = useMemo(() => {
     if (!orderData || !ingredients.length) return null;
 
