@@ -14,7 +14,7 @@ interface OrdersState {
   error: string | null | undefined;
 }
 
-const initialState: OrdersState = {
+export const initialState: OrdersState = {
   orders: [],
   loading: false,
   error: null

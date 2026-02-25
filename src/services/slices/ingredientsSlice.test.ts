@@ -1,11 +1,6 @@
-import ingredientsReducer, { fetchIngredients } from './ingredientsSlice';
+import ingredientsReducer, { fetchIngredients, initialState } from './ingredientsSlice';
 
 describe('тестирование ingredientsSlice', () => {
-    const initialState = {
-        ingredients: [],
-        loading: false,
-        error: null
-    };
 
     it('статус loading должен быть true при fetchIngredients.pending', () => {
         const action = { type: fetchIngredients.pending.type };

@@ -2,7 +2,8 @@ import constructorReducer, {
     addIngredient,
     removeIngredient,
     reorderIngredients,
-    clearConstructor
+    clearConstructor,
+    initialState
 } from './constructorSlice';
 
 const mockIngredient = {
@@ -34,10 +35,6 @@ const mockBun = {
 };
 
 describe('тестирование constructorSlice', () => {
-    const initialState = {
-        bun: null,
-        ingredients: []
-    };
 
     it('должен добавлять ингредиент (начинку) и генерировать uuid', () => {
         const newState = constructorReducer(initialState, addIngredient(mockIngredient));

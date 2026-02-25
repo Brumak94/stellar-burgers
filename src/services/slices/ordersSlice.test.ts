@@ -1,11 +1,6 @@
-import ordersReducer, { fetchOrders } from './ordersSlice';
+import ordersReducer, { fetchOrders, initialState } from './ordersSlice';
 
 describe('тестирование ordersSlice', () => {
-    const initialState = {
-        orders: [],
-        loading: false,
-        error: null
-    };
 
     it('статус loading должен быть true при fetchOrders.pending', () => {
         const action = { type: fetchOrders.pending.type };

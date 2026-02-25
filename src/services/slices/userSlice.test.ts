@@ -3,15 +3,11 @@ import userReducer, {
     loginUser,
     checkUserAuth,
     updateUser,
-    logoutUser
+    logoutUser,
+    initialState
 } from './userSlice';
 
 describe('тестирование userSlice', () => {
-    const initialState = {
-        user: null,
-        isAuthChecked: false,
-        error: null
-    };
 
     const mockUser = { email: 'test@test.ru', name: 'Test' };
 

@@ -1,11 +1,6 @@
-import orderReducer, { placeOrder, clearOrder } from './orderSlice';
+import orderReducer, { placeOrder, clearOrder, initialState } from './orderSlice';
 
 describe('тестирование orderSlice', () => {
-    const initialState = {
-        orderRequest: false,
-        orderModalData: null,
-        error: null
-    };
 
     it('должно очищать данные заказа при clearOrder', () => {
         const stateWithData = {
