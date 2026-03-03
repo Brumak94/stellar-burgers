@@ -16,7 +16,7 @@ interface FeedsState {
   error: string | null | undefined;
 }
 
-const initialState: FeedsState = {
+export const initialState: FeedsState = {
   orders: [],
   total: 0,
   totalToday: 0,

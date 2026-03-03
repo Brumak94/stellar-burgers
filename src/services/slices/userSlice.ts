@@ -57,7 +57,7 @@ interface UserState {
   error: string | null | undefined;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   user: null,
   isAuthChecked: false,
   error: null
